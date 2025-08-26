@@ -1,0 +1,16 @@
+name: Ping Streamlit App
+
+# Trigger the workflow on push and every 58 minutes
+on:
+  schedule:
+    - cron: '*/58 * * * *'   # every 58 minutes
+  workflow_dispatch:          # allows manual trigger
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping the Streamlit app
+        run: |
+          echo "Pinging Streamlit app..."
+          curl -I https://nakul-3205-cinemind-imdb-movie-review-classifier-app-dmdj38.streamlit.app/ || echo "Failed"
